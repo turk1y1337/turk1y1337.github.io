@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VT-ID | Target Details</title>
+    <title>Shodiyor Nodirbek | Penetration Tester</title>
     <style>
         * {
             margin: 0;
@@ -13,376 +13,164 @@
 
         body {
             background-color: #0a0a0a;
-            color: #e0e0e0;
-            font-family: 'Courier New', 'JetBrains Mono', monospace;
+            color: #d0d0d0;
+            font-family: 'Courier New', 'JetBrains Mono', 'Fira Code', monospace;
             line-height: 1.6;
+            font-size: 15px;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .header {
-            border-bottom: 1px solid #333;
-            padding: 2rem;
-            background: #0f0f0f;
+        header {
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #1a1a1a;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .brand {
+        .site-title {
             color: #ff3333;
+            font-size: 1.2rem;
             font-weight: bold;
-            font-size: 0.9rem;
             letter-spacing: 2px;
             margin-bottom: 0.5rem;
+        }
+
+        .site-subtitle {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            flex: 1;
         }
 
         h1 {
             color: #fff;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 400;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-        }
-
-        .nav {
-            background: #111;
-            border-bottom: 1px solid #222;
-            padding: 1rem 0;
-        }
-
-        .nav-content {
-            display: flex;
-            gap: 2rem;
-            font-size: 0.85rem;
-        }
-
-        .nav a {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .nav a:hover, .nav a.active {
-            color: #ff3333;
-        }
-
-        .main {
-            padding: 3rem 0;
-        }
-
-        .target-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            letter-spacing: -0.5px;
         }
 
-        .target-id {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
+        h2 {
             color: #ff3333;
-            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
         }
 
-        .severity {
-            padding: 0.3rem 1rem;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
         }
 
-        .severity-critical {
-            background: #ff3333;
-            color: #000;
-        }
-
-        .severity-high {
-            background: #ff8800;
-            color: #000;
-        }
-
-        .severity-medium {
-            background: #ffcc00;
-            color: #000;
-        }
-
-        .severity-low {
-            background: #00cc66;
-            color: #000;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .info-box {
-            background: #111;
-            border: 1px solid #222;
-            padding: 1.5rem;
-        }
-
-        .info-label {
-            color: #666;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .info-value {
-            color: #fff;
-            font-size: 1rem;
-            word-break: break-all;
-        }
-
-        .info-value a {
+        a {
             color: #00ccff;
             text-decoration: none;
+            border-bottom: 1px solid #1a1a1a;
+            transition: border-color 0.2s;
         }
 
-        .info-value a:hover {
+        a:hover {
+            border-bottom-color: #00ccff;
+        }
+
+        .highlight {
+            color: #ff3333;
+        }
+
+        .dim {
+            color: #555;
+        }
+
+        .social {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .social-item {
+            display: inline-block;
+            margin-right: 2rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .social-item a {
+            color: #00ccff;
+            border: none;
+        }
+
+        .social-item a:hover {
             text-decoration: underline;
         }
 
-        .section {
-            background: #111;
-            border: 1px solid #222;
-            margin-bottom: 2rem;
-            padding: 2rem;
-        }
-
-        .section-title {
-            color: #ff3333;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #333;
-        }
-
-        .description {
-            color: #ccc;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .description code {
-            background: #1a1a1a;
-            color: #00ff00;
-            padding: 0.2rem 0.4rem;
-            font-size: 0.9rem;
-            border: 1px solid #333;
-        }
-
-        .poc-box {
-            background: #0a0a0a;
-            border: 1px solid #333;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            overflow-x: auto;
-        }
-
-        .poc-box pre {
-            color: #00ff00;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
-        .poc-box .comment {
-            color: #666;
-        }
-
-        .poc-box .command {
-            color: #ff3333;
-        }
-
-        .impact-list {
-            list-style: none;
-        }
-
-        .impact-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: #ccc;
-        }
-
-        .impact-list li::before {
-            content: ">";
-            position: absolute;
-            left: 0;
-            color: #ff3333;
-        }
-
-        .footer {
-            border-top: 1px solid #222;
-            padding: 2rem;
+        footer {
             text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #1a1a1a;
             color: #444;
             font-size: 0.8rem;
-            margin-top: 4rem;
         }
 
-        .cursor::after {
-            content: "_";
-            animation: blink 1s infinite;
-            color: #ff3333;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-content {
-                flex-direction: column;
-                gap: 0.5rem;
+        @media (max-width: 600px) {
+            main {
+                padding: 2rem 1.5rem;
             }
-            
-            .target-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .info-grid {
-                grid-template-columns: 1fr;
+
+            .social-item {
+                display: block;
+                margin-right: 0;
             }
         }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <div class="brand">// YOUR BRAND</div>
-            <h1>Your Title Here</h1>
-            <div class="subtitle">// Your subtitle here</div>
-        </div>
+    <header>
+        <div class="site-title">SHODIYOR NODIRBEK</div>
+        <div class="site-subtitle">penetration tester</div>
     </header>
 
-    <nav class="nav">
-        <div class="container">
-            <div class="nav-content">
-                <a href="#" class="active">[ Section 1 ]</a>
-                <a href="#">[ Section 2 ]</a>
-                <a href="#">[ Section 3 ]</a>
-                <a href="#">[ Section 4 ]</a>
-            </div>
+    <main>
+        <h1>// About</h1>
+        
+        <p>
+            I'm <span class="highlight">Shodiyor Nodirbek</span> (also known as turk1y), an offensive security researcher 
+            and CTF author based in Central Asia. I specialize in web application security, vulnerability research, 
+            and creating educational security challenges.
+        </p>
+
+        <p>
+            Currently holding <span class="dim">10+ global certifications</span> including <span class="highlight">OSCP</span>. 
+            I focus on practical exploitation techniques, Docker-based lab environments, and teaching cybersecurity through hands-on learning.
+        </p>
+
+        <h2>// Recent Activity</h2>
+        <p>
+            Preparing educational content on practical bug hunting methodologies for IT/cybersecurity students. 
+            Building <a href="#">centihack.com</a> platform for security education in the Uzbek language.
+        </p>
+
+        <div class="social">
+            <span class="social-item">TG: <a href="https://t.me/csshodiyor">@csshodiyor</a></span>
+            <span class="social-item">X: <a href="https://x.com/trk_1337">@trk_1337</a></span>
         </div>
-    </nav>
 
-    <main class="main">
-        <div class="container">
-            
-            <div class="target-header">
-                <div>
-                    <span class="target-id cursor">YOUR-ID-HERE</span>
-                </div>
-                <span class="severity severity-critical">SEVERITY</span>
-            </div>
-
-            <div class="info-grid">
-                <div class="info-box">
-                    <div class="info-label">Label 1</div>
-                    <div class="info-value">Value 1</div>
-                </div>
-                
-                <div class="info-box">
-                    <div class="info-label">Label 2</div>
-                    <div class="info-value">Value 2</div>
-                </div>
-                
-                <div class="info-box">
-                    <div class="info-label">Label 3</div>
-                    <div class="info-value">Value 3</div>
-                </div>
-                
-                <div class="info-box">
-                    <div class="info-label">Label 4</div>
-                    <div class="info-value">Value 4</div>
-                </div>
-                
-                <div class="info-box">
-                    <div class="info-label">Label 5</div>
-                    <div class="info-value">Value 5</div>
-                </div>
-                
-                <div class="info-box">
-                    <div class="info-label">Label 6</div>
-                    <div class="info-value" style="color: #ff3333;">Status</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">// Description</h2>
-                <div class="description">
-                    Your description here...
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">// Proof of Concept</h2>
-                <div class="description">
-                    PoC description...
-                </div>
-                <div class="poc-box">
-                    <pre>
-<span class="command">COMMAND</span> payload here
-<span class="comment"># comments here</span></pre>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">// Impact</h2>
-                <ul class="impact-list">
-                    <li>Impact item 1</li>
-                    <li>Impact item 2</li>
-                    <li>Impact item 3</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">// Remediation</h2>
-                <div class="description">
-                    Remediation steps here...
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">// References</h2>
-                <div class="description">
-                    • <a href="#">Reference 1</a><br>
-                    • <a href="#">Reference 2</a>
-                </div>
-            </div>
-
-        </div>
+        <p style="margin-top: 2rem;">
+            <span class="dim">Contact:</span> Available for security consulting, CTF development, and 
+            collaboration on offensive security research.
+        </p>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            // Your Footer Text //
-        </div>
+    <footer>
+        // 2026 Shodiyor Nodirbek // turk1y.github.io //
     </footer>
 
 </body>
