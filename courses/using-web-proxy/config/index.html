@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burp va ZAP o'rnatish | turk1y</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #141d2b;
+            color: #ffffff;
+            font-family: 'Courier New', 'JetBrains Mono', 'Fira Code', monospace;
+            line-height: 1.7;
+            font-size: 15px;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: rgba(255, 140, 66, 0.2);
+            color: #ffffff;
+        }
+
+        .header {
+            padding: 2.5rem 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #1a2332;
+        }
+        .header-title {
+            color: #ff8c42;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+        .header-sub {
+            color: #ffffff;
+            opacity: 0.5;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+        }
+
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 4rem;
+        }
+
+        .breadcrumb {
+            color: #ffffff;
+            opacity: 0.4;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .breadcrumb a {
+            color: #ffffff;
+            opacity: 0.6;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover { opacity: 1; text-decoration: underline; }
+        .breadcrumb span { color: #ff8c42; margin: 0 0.4rem; opacity: 1; }
+
+        h1 {
+            color: #ffffff;
+            font-size: 1.7rem;
+            font-weight: 400;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            color: #ff8c42;
+            font-size: 1.15rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        h3 {
+            color: #ffffff;
+            opacity: 0.8;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+        p {
+            color: #ffffff;
+            opacity: 0.85;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        a {
+            color: #ff8c42;
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+        .highlight { color: #ff8c42; }
+
+        ul, ol {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+        }
+        li {
+            color: #ffffff;
+            opacity: 0.85;
+            margin-bottom: 0.5rem;
+        }
+        li::marker {
+            color: #ff8c42;
+        }
+
+        pre {
+            background: #111;
+            border: 1px solid #1a2332;
+            border-radius: 4px;
+            padding: 1rem 1.2rem;
+            overflow-x: auto;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        pre code {
+            color: #ffffff;
+            opacity: 0.9;
+            font-family: inherit;
+        }
+        .code-prompt { color: #ff8c42; }
+
+        .lesson-img {
+            max-width: 100%;
+            border: 1px solid #1a2332;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .img-caption {
+            color: #ffffff;
+            opacity: 0.4;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #ffffff;
+            opacity: 0.5;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .next-btn:hover {
+            border-color: #ff8c42;
+            color: #ff8c42;
+            opacity: 1;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #1a2332;
+            color: #ffffff;
+            opacity: 0.35;
+            font-size: 0.8rem;
+        }
+        .footer a {
+            color: #ffffff;
+            opacity: 0.5;
+        }
+        .footer a:hover {
+            color: #ff8c42;
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .main { padding: 1.5rem; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <header class="header">
+        <a href="/" class="header-title">TURK1Y.GITHUB.IO</a>
+        <div class="header-sub">kiberxavfsizlik kurslari | o'zbek tilida</div>
+    </header>
+
+    <main class="main">
+        <div class="breadcrumb">
+            <a href="/">Bosh sahifa</a>
+            <span>/</span>
+            <a href="#">Using Web Proxies</a>
+            <span>/</span>
+            <span>Burp va ZAP o'rnatish</span>
+        </div>
+
+        <h1>Burp va ZAP o'rnatish va sozlash</h1>
+
+        <p>
+            Burp va ZAP ikkala <span class="highlight">Windows, macOS</span> va istalgan Linux distributsiya uchun mavjud.
+            Ikkala vosita ham Parrot yoki Kali kabi umumiy Penetration Testing Linux distributsiyalarida
+            odatda oldindan o'rnatilgan bo'ladi. Ushbu bo'limda biz Burp va ZAP uchun
+            <span class="highlight">installation va setup</span> jarayonlarini ko'rib chiqamiz —
+            ayniqsa vositalarni o'z VM'imizga qo'lda o'rnatmoqchi bo'lsak foydali.
+        </p>
+
+        <h2>// Burp Suite</h2>
+
+        <p>
+            Agar Burp VM'imizda pre-installed bo'lmasa, avval
+            <a href="https://portswigger.net/burp/communitydownload" target="_blank">Burp's Download Page</a>
+            dan yuklab olish bilan boshlaymiz. Yuklab olingach, installer ni ishga tushirib,
+            operatsion tizimga qarab farq qilishi mumkin bo'lgan, ammo oddiy ko'rsatmalarga amal qilib o'rnatamiz.
+            Windows, Linux va macOS uchun installers mavjud.
+        </p>
+
+        <p>
+            O'rnatilgach, Burp ni terminaldan <span class="highlight">burpsuite</span> deb yozib ishga tushirish
+            yoki avvalgi kabi application menu dan ochish mumkin. Yana bir variant — yuqoridagi download sahifasidan
+            barcha operatsion tizimlarda ishlaydigan JAR faylini (Java Runtime Environment (JRE) o'rnatilgan bo'lsa) yuklab olishdir.
+            Uni quyidagi command line bilan yoki double-clicking orqali ishga tushirishimiz mumkin:
+        </p>
+
+        <pre><code><span class="code-prompt">centipede@centisec[/centi]$</span> java -jar &lt;/path/to/burpsuite.jar&gt;</code></pre>
+
+        <p>
+            Burp ishga tushirilgach, bizdan yangi project yaratish so'raladi.
+            Agar <span class="highlight">community version</span> ni ishlatayotgan bo'lsak,
+            faqat temporary projects dan foydalanishimiz mumkin bo'ladi, ya'ni progress'ni saqlab,
+            keyinchalik davom ettirish imkoniyati bo'lmaydi:
+        </p>
+
+        <img src="1.jpg" alt="Burp temporary project" class="lesson-img">
+        <div class="img-caption">Rasm: Burp Suite'da temporary project tanlash</div>
+
+        <p>
+            Agar biz <span class="highlight">pro/enterprise version</span> dan foydalansak,
+            yangi project yaratish yoki mavjud project ni ochish imkoniyatiga ega bo'lamiz.
+        </p>
+
+        <img src="2.jpg" alt="Burp pro project" class="lesson-img">
+        <div class="img-caption">Rasm: Burp Pro'da project boshqaruvi</div>
+
+        <p>
+            Katta web ilovalarni pentesting qilayotganimizda yoki Active Web Scan ishga tushirayotganimizda
+            progress'ni saqlashimiz kerak bo'lishi mumkin. Biroq ko'plab hollarda progress'ni saqlashga hojat yo'q
+            va har safar temporary project bilan boshlash yetarli bo'ladi.
+        </p>
+
+        <p>
+            Shunday ekan, <span class="highlight">temporary project</span> ni tanlaymiz va continue tugmasini bosamiz.
+            Shundan so'ng bizga <span class="highlight">Burp Default Configurations</span> ni ishlatish
+            yoki Load a Configuration File ni yuklash taklif etiladi — biz birinchi variantni tanlaymiz.
+        </p>
+
+        <h2>// OWASP ZAP</h2>
+
+        <p>
+            ZAP'ni <a href="https://www.zaproxy.org/download/" target="_blank">rasmiy yuklash sahifasidan</a>
+            yuklab olamiz, operatsion tizimimizga mos o'rnatuvchini tanlaymiz va oddiy o'rnatish ko'rsatmalariga amal qilib o'rnatamiz.
+            ZAP'ning cross-platform JAR varianti ham mavjud; JRE o'rnatilgan bo'lsa, uni quyidagi buyruq orqali ishga tushirish mumkin —
+            Burp'dagi kabi:
+        </p>
+
+        <pre><code><span class="code-prompt">$</span> java -jar &lt;path/to/zap.jar&gt;</code></pre>
+
+        <p>
+            ZAP bilan ishni boshlash uchun terminalda <span class="highlight">zaproxy</span> deb yozib ishga tushiramiz
+            yoki application menudan topib ochamiz. ZAP ishga tushgach, Burp'ning bepul versiyasidan farqli ravishda,
+            bizdan yangi project yoki temporary project yaratish so'raladi. Katta va bir necha kun davomida saqlash talab etilmaydigan ishlar
+            uchun temporary project'dan foydalanish ma'qul — ya'ni <span class="highlight">"No"</span> ni tanlaymiz.
+        </p>
+
+        <img src="3.jpg" alt="ZAP temporary project" class="lesson-img">
+        <div class="img-caption">Rasm: ZAP'da temporary project tanlash</div>
+
+        <p>
+            Shundan so'ng ZAP ishga tushadi va biz proxy sozlamalarini davom ettirishimiz mumkin —
+            bu keyingi bo'limda muhokama qilinadi.
+        </p>
+
+        <h3>// Dark Theme</h3>
+
+        <p>
+            Agar dark theme ishlatishni afzal ko'rsangiz, Burp'da
+            <span class="highlight">Burp > Settings > User interface > Display</span> ga o'tib
+            theme ostidan "dark" ni tanlang; ZAP'da esa
+            <span class="highlight">Tools > Options > Display</span> ga o'tib
+            Look and Feel ichidan "Flat Dark" ni tanlang.
+        </p>
+
+        <a href="proxy-sozlash.html" class="next-btn">Keyingi dars →</a>
+    </main>
+
+    <footer class="footer">
+        // 2026 turk1y // <a href="https://t.me/csshodiyor" target="_blank">@csshodiyor</a> //
+    </footer>
+
+</body>
+</html>
