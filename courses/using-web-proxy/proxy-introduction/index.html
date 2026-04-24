@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebProxy Bilan Tanishuv | turk1y</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #0a0a0a;
+            color: #d0d0d0;
+            font-family: 'Courier New', 'JetBrains Mono', 'Fira Code', monospace;
+            line-height: 1.7;
+            font-size: 15px;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: rgba(255, 51, 51, 0.2);
+            color: #fff;
+        }
+
+        .header {
+            padding: 2.5rem 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .header-title {
+            color: #ff3333;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+        .header-sub {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+        }
+
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 4rem;
+        }
+
+        .breadcrumb {
+            color: #555;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .breadcrumb a {
+            color: #00ccff;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: #ff3333; margin: 0 0.4rem; }
+
+        h1 {
+            color: #fff;
+            font-size: 1.7rem;
+            font-weight: 400;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            color: #ff3333;
+            font-size: 1.15rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        h3 {
+            color: #00ccff;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        a {
+            color: #00ccff;
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+        .highlight { color: #ff3333; }
+
+        ul, ol {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        li::marker {
+            color: #ff3333;
+        }
+
+        .next-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid #333;
+            color: #888;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .next-btn:hover {
+            border-color: #ff3333;
+            color: #ff3333;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #1a1a1a;
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .main { padding: 1.5rem; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <header class="header">
+        <a href="/" class="header-title">TURK1Y.GITHUB.IO</a>
+        <div class="header-sub">kiberxavfsizlik kurslari | o'zbek tilida</div>
+    </header>
+
+    <main class="main">
+        <div class="breadcrumb">
+            <a href="/">Bosh sahifa</a>
+            <span>/</span>
+            <a href="#">Using Web Proxies</a>
+            <span>/</span>
+            <span>WebProxy bilan Tanishuv</span>
+        </div>
+
+        <h1>WebProxy Bilan Tanishuv</h1>
+
+        <p>
+            Bugungi kunda ko'pgina zamonaviy veb va mobil ilovalar ma'lumot yuborish-qabul qilish uchun
+            doimiy ravishda back-end serverlarga ulanadi va ushbu ma'lumotni brauzer yoki telefonida qayta ishlaydi.
+            Ko'pchilik ilovalar ma'lumotni qayta ishlashda back-end serverlarga kuchli tayanar ekan,
+            aynan shu serverlarni testlash va himoyalash tobora muhimlashib bormoqda.
+        </p>
+
+        <p>
+            Back-end serverlarga yuboriladigan veb so'rovlarni testlash
+            <span class="highlight">Web Application Penetration Testing</span> ishlarining asosiy qismini tashkil etadi
+            va bu g'oyalar ham veb, ham mobil ilovalarga tegishli. Ilova bilan back-end o'rtasidan o'tadigan
+            so'rov/traffikni ushlash va test maqsadida ularni o'zgartirish uchun
+            <span class="highlight">Web Proxies</span> dan foydalanishimiz kerak bo'ladi.
+        </p>
+
+        <h2>// Web Proxies nima?</h2>
+
+        <p>
+            Web proxies — brauzer yoki mobil ilova bilan back-end server orasiga qo'yiladigan maxsus vositalar bo'lib,
+            ular ikki tomon orasida ketayotgan barcha veb so'rovlarni ushlab ko'rish imkonini beradi;
+            qisqasi, <span class="highlight">man-in-the-middle</span> turidagi vositalar sifatida ishlaydi.
+        </p>
+
+        <p>
+            Boshqa Network Sniffing ilovalari masalan, <span class="highlight">Wireshark</span> tarmoqdan o'tayotgan
+            barcha lokal trafikni tahlil qilish orqali ishlasa, Web Proxies asosan
+            <span class="highlight">HTTP/80</span> va <span class="highlight">HTTPS/443</span> kabi veb portlar bilan ishlaydi.
+        </p>
+
+        <p>
+            Web proxies har qanday veb pentester uchun eng zarur vositalardan hisoblanadi. Ular CLI-asosidagi oldingi vositalarga nisbatan veb so'rovlarni ushlash va qayta yuborishni ancha soddalashtiradi. Web proxy sozlangach, ilova yuborgan barcha HTTP so'rovlar va back-end serverdan kelgan javoblarni ko'ra olamiz. Bundan tashqari, muayyan so'rovni intercept qilib, undagi ma'lumotni o'zgartirib, back-end buni qanday qayta ishlashini sinab ko'rishimiz mumkin — bu har qanday veb pentestning muhim qismidir.
+        </p>
+
+        <h2>// Web Proxies dan foydalanish sohalari</h2>
+
+        <p>
+            Asosiy vazifa — HTTP so'rovlarni ushlash va qayta yuborish — dan tashqari,
+            web proxies ko'plab boshqa imkoniyatlarga ham ega. Quyidagilar ulardan ba'zilari:
+        </p>
+
+        <ul>
+            <li>Veb ilovalarda zaifliklarni skanerlash</li>
+            <li>Web fuzzing</li>
+            <li>Web crawling</li>
+            <li>Web ilovani xaritalash</li>
+            <li>Web so'rovlarni tahlil qilish</li>
+            <li>Web konfiguratsiyalarni sinash</li>
+            <li>Code review-larni yengillashtirish</li>
+        </ul>
+
+        <p>
+            Ushbu modulda biz aniq veb hujum turlarini muhokama qilmaymiz.
+            Biroq web proxies dan foydalanish va ularning turli funksiyalarini batafsil ko'rib chiqamiz
+            hamda qaysi veb hujum turi uchun qaysi funksiyalar zarurligini eslatib o'tamiz.
+            Biz ikkita eng ommabop web proxy vositasini yoritamiz: Burp Suite va ZAP.
+        </p>
+
+        <h2>// Burp Suite</h2>
+
+        <p>
+            <span class="highlight">Burp Suite</span> (oddiy qilib aytsak "Burp Sweet" deb talaffuz qilinadi) —
+            veb pentesting uchun eng ommabop veb proxy hisoblanadi. U keng funksiyalar uchun qulay UI ga ega
+            va hatto ichki Chromium brauzerini ham taqdim etadi. Ba'zi Burp funksiyalari faqat tijoriy Burp Pro/Enterprise versiyalarida mavjud, biroq bepul community versiyasi ham juda kuchli test vositasi hisoblanadi.
+        </p>
+
+        <h3>Pullik-gina funksiyalar</h3>
+
+        <ul>
+            <li>Active web app scanner</li>
+            <li>Tezkor Burp Intruder</li>
+            <li>Muayyan Burp Extensions ni yuklash imkoniyati</li>
+        </ul>
+
+        <p>
+            Community (bepul) versiya ko'pchilik pentesterlar uchun yetarli bo'ladi.
+            Ilg'orroq veb pentestlarga o'tganda, pro funksiyalar qo'l kelishi mumkin.
+            Ushbu modulda ko'rib chiqiladigan funksiyalarning aksariyati community versiyada mavjud; shu bilan birga, Active Web App Scanner kabi pro funksiyalariga ham qisqacha to'xtalamiz.
+        </p>
+
+        <p>
+            Maslahat: Agar sizda ta'lim yoki biznes email manzilingiz bo'lsa, keyinroq ko'rsatilgan maxsus havola orqali Burp Pro'ning bepul sinov muddatiga ariza topshirib, ushbu modulning pro-gina funksiyalarini ham amalda kuzatib borishingiz mumkin.
+        </p>
+
+        <h2>// OWASP Zed Attack Proxy</h2>
+
+        <p>
+            <span class="highlight">OWASP Zed Attack Proxy</span> — veb pentesting uchun yana bir keng tarqalgan
+            veb proxy vositasi. ZAP — OWASP tomonidan boshlangan va hamjamiyat tomonidan qo'llab-quvvatlanadigan
+            <span class="highlight">bepul va open-source</span> loyiha, shuning uchun Burp'dagi kabi "pullu-gina" funksiyalar yo'q.
+            So'nggi yillarda ZAP jadal rivojlanib, open-source veb proxy vositalari ichida yetakchi mavqega chiqib bormoqda.
+        </p>
+
+        <p>
+            Burp singari, ZAP ham veb pentestingda qo'l keladigan bir qator asosiy va ilg'or funksiyalarga ega. ZAP'ning ayrim ustun tomonlari bor — ular haqida modul davomida gaplashamiz. ZAP'ning asosiy afzalligi — to'liq bepul va open-source ekani: demak, skanerlarda pullik obuna bilan ochiladigan cheklovlar yo'q. Bundan tashqari, hamjamiyat kengayib borar ekan, ZAP ko'plab "Burp'da pullik-gina bo'lgan" funksiyalarni ham bepul taklif etib bormoqda.
+        </p>
+
+        <h2>// Xulosa</h2>
+
+        <p>
+            Har ikkala vositani o'rganish jarayoni ancha o'xshash va pentest davomida turli vaziyatlar uchun tanlov beradi —
+            qaysi biri ehtiyojimizga mos bo'lsa, o'shani qo'llaymiz.
+        </p>
+
+        <p>
+            Ba'zan Burp obunasining qiymati o'zini oqlamasligi mumkin va to'liq ochiq hamda bepul tajriba uchun
+            ZAP'ga o'tish ma'qul bo'ladi. Boshqa holatlarda esa, yirik yoki korporativ pentestlar uchun pishiqroq yechim zarur bo'lsa,
+            Burp Pro taqdim etadigan qiymat o'zini oqlaydi va shu funksiyalar uchun Burpdan foydalanish mantiqli bo'ladi.
+        </p>
+
+        <a href="burp-suite-ornatish.html" class="next-btn">Keyingi dars →</a>
+    </main>
+
+    <footer class="footer">
+        // 2026 turk1y // <a href="https://t.me/csshodiyor" target="_blank">@csshodiyor</a> //
+    </footer>
+
+</body>
+</html>
