@@ -8,8 +8,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #0a0a0a;
-            color: #d0d0d0;
+            background-color: #141d2b;
+            color: #ffffff;
             font-family: 'Courier New', 'JetBrains Mono', 'Fira Code', monospace;
             line-height: 1.7;
             font-size: 15px;
@@ -17,24 +17,25 @@
         }
 
         ::selection {
-            background: rgba(255, 51, 51, 0.2);
-            color: #fff;
+            background: rgba(255, 140, 66, 0.2);
+            color: #ffffff;
         }
 
         .header {
             padding: 2.5rem 2rem 1rem;
             text-align: center;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a2332;
         }
         .header-title {
-            color: #ff3333;
+            color: #ff8c42;
             font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: 2px;
             text-decoration: none;
         }
         .header-sub {
-            color: #666;
+            color: #ffffff;
+            opacity: 0.5;
             font-size: 0.85rem;
             margin-top: 0.4rem;
         }
@@ -46,82 +47,100 @@
         }
 
         .breadcrumb {
-            color: #555;
+            color: #ffffff;
+            opacity: 0.4;
             font-size: 0.8rem;
             margin-bottom: 1.5rem;
         }
         .breadcrumb a {
-            color: #00ccff;
+            color: #ffffff;
+            opacity: 0.6;
             text-decoration: none;
         }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb span { color: #ff3333; margin: 0 0.4rem; }
+        .breadcrumb a:hover { opacity: 1; text-decoration: underline; }
+        .breadcrumb span { color: #ff8c42; margin: 0 0.4rem; opacity: 1; }
 
         h1 {
-            color: #fff;
+            color: #ffffff;
             font-size: 1.7rem;
             font-weight: 400;
             margin-bottom: 0.6rem;
             letter-spacing: -0.5px;
         }
         h2 {
-            color: #ff3333;
+            color: #ff8c42;
             font-size: 1.15rem;
             margin-top: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 400;
         }
         h3 {
-            color: #00ccff;
+            color: #ffffff;
+            opacity: 0.8;
             font-size: 1rem;
             margin-top: 1.5rem;
             margin-bottom: 0.75rem;
             font-weight: 400;
         }
         p {
+            color: #ffffff;
+            opacity: 0.85;
             margin-bottom: 1.2rem;
             text-align: justify;
         }
         a {
-            color: #00ccff;
+            color: #ff8c42;
             text-decoration: none;
         }
         a:hover { text-decoration: underline; }
-        .highlight { color: #ff3333; }
+        .highlight { color: #ff8c42; }
 
         ul, ol {
             margin-bottom: 1.2rem;
             padding-left: 1.5rem;
         }
         li {
+            color: #ffffff;
+            opacity: 0.85;
             margin-bottom: 0.5rem;
         }
         li::marker {
-            color: #ff3333;
+            color: #ff8c42;
         }
 
         .next-btn {
             display: inline-block;
             margin-top: 2rem;
             padding: 0.7rem 1.5rem;
-            border: 1px solid #333;
-            color: #888;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #ffffff;
+            opacity: 0.5;
             text-decoration: none;
             font-family: inherit;
             font-size: 0.9rem;
             transition: all 0.2s;
         }
         .next-btn:hover {
-            border-color: #ff3333;
-            color: #ff3333;
+            border-color: #ff8c42;
+            color: #ff8c42;
+            opacity: 1;
         }
 
         .footer {
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid #1a1a1a;
-            color: #444;
+            border-top: 1px solid #1a2332;
+            color: #ffffff;
+            opacity: 0.35;
             font-size: 0.8rem;
+        }
+        .footer a {
+            color: #ffffff;
+            opacity: 0.5;
+        }
+        .footer a:hover {
+            color: #ff8c42;
+            opacity: 1;
         }
 
         @media (max-width: 600px) {
