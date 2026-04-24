@@ -140,9 +140,16 @@
             margin-bottom: 1.5rem;
         }
 
-        .next-btn {
-            display: inline-block;
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2332;
+        }
+        .nav-btn {
+            display: inline-block;
             padding: 0.7rem 1.5rem;
             border: 1px solid rgba(255,255,255,0.15);
             color: #ffffff;
@@ -152,10 +159,18 @@
             font-size: 0.9rem;
             transition: all 0.2s;
         }
-        .next-btn:hover {
+        .nav-btn:hover {
             border-color: #ff8c42;
             color: #ff8c42;
             opacity: 1;
+        }
+        .nav-btn.hidden {
+            display: none;
+        }
+        .nav-counter {
+            color: #ffffff;
+            opacity: 0.3;
+            font-size: 0.85rem;
         }
 
         .footer {
@@ -177,6 +192,7 @@
 
         @media (max-width: 600px) {
             .main { padding: 1.5rem; }
+            .lesson-nav { flex-direction: column; gap: 1rem; }
         }
     </style>
 <base target="_blank">
@@ -192,7 +208,7 @@
         <div class="breadcrumb">
             <a href="/">Bosh sahifa</a>
             <span>/</span>
-            <a href="#">Using Web Proxies</a>
+            <a href="../index.html">Using Web Proxies</a>
             <span>/</span>
             <span>Burp va ZAP o'rnatish</span>
         </div>
@@ -292,7 +308,11 @@
             Look and Feel ichidan "Flat Dark" ni tanlang.
         </p>
 
-        <a href="proxy-sozlash.html" class="next-btn">Keyingi dars →</a>
+        <div class="lesson-nav">
+            <a href="../proxy-introduction/index.html" class="nav-btn">← Oldingi dars</a>
+            <span class="nav-counter">2 / 3</span>
+            <a href="../proxy-sozlash/index.html" class="nav-btn">Keyingi dars →</a>
+        </div>
     </main>
 
     <footer class="footer">
